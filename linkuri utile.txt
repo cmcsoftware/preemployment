@@ -1,0 +1,8 @@
+Spring Security using JWT in Spring Boot App 
+https://www.youtube.com/watch?v=-HYrUs1ZCLI 
+
+React Router tutorial for beginners
+https://www.youtube.com/watch?v=91F8reC8kvo
+
+Microservices with Spring Boot
+http://www.springboottutorial.com/creating-microservices-with-spring-boot-part-1-getting-started
