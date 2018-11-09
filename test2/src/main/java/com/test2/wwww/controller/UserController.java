@@ -3,11 +3,14 @@
  */
 package com.test2.wwww.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +39,11 @@ public class UserController {
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
+	
+	@PostMapping("/getEmptyUsers")
+    public List<User> getEmptyUser() {
+        return new ArrayList<User>();
+    }
 
 	@PostMapping("/getUser")
     public User getUser(@RequestParam String userName) {
@@ -62,6 +70,11 @@ public class UserController {
         user.setPassword(password);
         user.setSurname(surname);
         user.setStuff(stuff);
+        userRepository.save(user);        		
+    }
+	
+	@PutMapping("/updateUser")
+    public void addUser(@RequestBody User user) {        
         userRepository.save(user);        		
     }
 	

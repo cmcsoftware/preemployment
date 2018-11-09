@@ -9,6 +9,7 @@ import Register from "./components/Register";
 import Redirect from "./components/Redirect";
 import Login from "./components/Login";
 import Users from "./components/Users";
+import Grid from "./components/Grid";
 
 class App extends Component {
   render() {
@@ -24,6 +25,7 @@ class App extends Component {
             <Route path="/redirect" component={Redirect} />
             <Route path="/show" component={Users} />
             <Route path="/login" component={Login} />
+            <Route path="/grid" component={Grid} />
             <Route component={Error} />
           </Switch>
         </div>
