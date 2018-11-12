@@ -18,6 +18,8 @@ return(
         <br/>
         <NavLink to="/grid">Grid Example</NavLink>
         <br/>
+        <NavLink to="/test">Test Example</NavLink>
+        <br/>
     </div>
 );
 
