@@ -74,8 +74,13 @@ public class UserController {
     }
 	
 	@PutMapping("/updateUser")
-    public void addUser(@RequestBody User user) {        
+    public void updateUser(@RequestBody User user) {        
         userRepository.save(user);        		
+    }
+	
+	@PutMapping("/deleteUser")
+    public void deleteUser(@RequestParam String userName) {
+		userRepository.delete(userName);          	
     }
 	
 }
