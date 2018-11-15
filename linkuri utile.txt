@@ -9,3 +9,6 @@ http://www.springboottutorial.com/creating-microservices-with-spring-boot-part-1
 
 Grid example in react
 https://adazzle.github.io/react-data-grid/#/examples/basic
+
+Polling App built with Spring Boot, Spring Security, MySQL and JWT
+https://www.callicoder.com/spring-boot-spring-security-jwt-mysql-react-app-part-1/
