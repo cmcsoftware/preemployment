@@ -1,28 +1,13 @@
+import RowRenderer from "./RowRenderer";
 import update from "immutability-helper";
-const {
-  Toolbar,
-  Data: { Selectors }
+import MyContextMenu from "./MyContextMenu";
+import EmptyRowsView from "./EmptyRowsView";
+const {  Toolbar,  Data: { Selectors }
 } = require("react-data-grid-addons");
 const ReactDataGrid = require("react-data-grid");
 const React = require("react");
+const { Menu: { ContextMenuTrigger } } = require('react-data-grid-addons');
 
-class EmptyRowsView extends React.Component {
-  render() {
-    return (
-      <div className="container">
-        <div
-          className="row"
-          style={{ paddingTop: "20px", paddingLeft: "400px" }}
-        >
-          <div className="col-md-6">
-            <p>Nothing to show</p>
-            <br />
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
 
 class Grid extends React.Component {
   constructor(props, context) {
@@ -114,8 +99,6 @@ class Grid extends React.Component {
     } else {
       delete newFilters[filter.column.key];
     }
-    console.log(newFilters);
-    console.log(filter);
     this.setState({ filters: newFilters });
   };
 
@@ -152,6 +135,44 @@ class Grid extends React.Component {
     this.setState({ rows });
   };
 
+
+  deleteRow = (e, { rowIdx }) => {    
+    let username = this.state.rows[rowIdx].username;
+    let url = "http://192.168.209.75:8080/user/deleteUser?userName=" + username;
+    fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(() => this.createRows());
+
+  };
+
+  insertRowAbove = (e, { rowIdx }) => {
+    this.insertRow(rowIdx);
+  };
+
+  insertRowBelow = (e, { rowIdx }) => {
+    this.insertRow(rowIdx + 1);
+  };
+
+  insertRow = (rowIdx) => {
+    const newRow = {
+      username: 'vasile',
+      name: 'Ion',
+      surname: 'Gheorghe',
+      stuff : 'O descrieree acileasa'
+    };
+
+    let rows = [...this.state.rows];
+    rows.splice(rowIdx, 0, newRow);
+
+    this.setState({ rows });
+  };
+
+
   render() {
     return (
       <div className="container">
@@ -170,10 +191,15 @@ class Grid extends React.Component {
           onAddFilter={this.handleFilterChange}
           onClearFilters={this.onClearFilters}
           emptyRowsView={EmptyRowsView}
+          rowRenderer={RowRenderer}
+          contextMenu={<MyContextMenu id="customizedContextMenu" onRowDelete={this.deleteRow} onRowInsertAbove={this.insertRowAbove} onRowInsertBelow={this.insertRowBelow} />}
+          RowsContainer={ContextMenuTrigger}
         />
       </div>
     );
   }
 }
+
+
 
 export default Grid;
