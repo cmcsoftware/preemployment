@@ -12,3 +12,9 @@ https://adazzle.github.io/react-data-grid/#/examples/basic
 
 Polling App built with Spring Boot, Spring Security, MySQL and JWT
 https://www.callicoder.com/spring-boot-spring-security-jwt-mysql-react-app-part-1/
+
+Simple introduction in javascript:
+https://www.youtube.com/watch?v=nZ1DMMsyVyI
+
+Introduction in spring boot
+https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started-introducing-spring-boot.html
